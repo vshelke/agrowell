@@ -1,0 +1,11 @@
+{% extends 'dashboard/header.html' %}
+{% block body %}
+<div class="wrapper">
+    {% include 'dashboard/sidebar.html' %}
+    <div class="main-panel">
+        {% include 'dashboard/navbar.html' %}
+        {% include 'dashboard/content.html' %}
+        {% include 'dashboard/footer.html' %}
+    </div>
+</div>
+{% endblock %}
