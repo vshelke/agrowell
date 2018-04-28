@@ -1,26 +1,42 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    {% load static %}
-	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicon.png' %}">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>AgroWell</title>
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/paper-dashboard.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/demo.css' %}" rel="stylesheet" />
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet" />
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="UTF-8"> {% load static %}
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/logo.png' %}" />
+    <title>agrowell</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth|Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <script src="{% static 'js/require.min.js' %}"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '.'
+        });
+    </script>
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    <link href="{% static 'css/site.css' %}" rel="stylesheet" />
+    <script src="{% static 'plugins/input-mask/plugin.js' %}"></script>
 </head>
+
 <body>
-{% block body %}
-{% endblock %}
+    <div class="page">
+        <div class="page-main">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
 </body>
-{% include 'dashboard/script.html' %}
+    {% include 'dashboard/script.html' %}
 </html>
