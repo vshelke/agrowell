@@ -1,0 +1,8 @@
+Django==2.0.4
+djangorestframework==3.8.2
+numpy==1.14.3
+pandas==0.22.0
+python-dateutil==2.7.2
+pytz==2018.4
+rethinkdb==2.3.0.post6
+six==1.11.0
