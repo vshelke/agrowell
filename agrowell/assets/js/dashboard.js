@@ -19,7 +19,9 @@ paths: {
 'vector-map-de': '/static/js/vendors/jquery-jvectormap-de-merc',
 'vector-map-world': '/static/js/vendors/jquery-jvectormap-world-mill',
 'circle-progress': '/static/js/vendors/circle-progress.min',
-'chartjs': '/static/js/vendors/chart.bundle.min'
+'chartjs': '/static/js/vendors/chart.bundle.min',
+'chartist': '/static/js/vendors/chartist.min',
+'input-mask': '/static/js/vendors/jquery.mask.min'
 }
 });
 window.tabler = {

@@ -18,16 +18,10 @@
     <title>agrowell</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth|Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <script src="{% static 'js/require.min.js' %}"></script>
-    <script>
-        requirejs.config({
-            baseUrl: '.'
-        });
-    </script>
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
-    <script src="{% static 'js/dashboard.js' %}"></script>
+    <link href="{% static 'css/chartist.css' %}" rel="stylesheet" />
     <link href="{% static 'css/site.css' %}" rel="stylesheet" />
-    <script src="{% static 'plugins/input-mask/plugin.js' %}"></script>
+
 </head>
 
 <body>
@@ -37,6 +31,8 @@
             {% endblock %}
         </div>
     </div>
+    {% include 'dashboard/footer.html' %}
 </body>
-    {% include 'dashboard/script.html' %}
+    {% block script %}
+    {% endblock %}
 </html>

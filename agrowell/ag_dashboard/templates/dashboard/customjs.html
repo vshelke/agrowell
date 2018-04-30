@@ -1,0 +1,75 @@
+<script>
+    function renderChart(selector, labels, series, area) {
+        var data = {
+            labels: labels,
+            series: series
+        };
+        var options = {
+            lineSmooth: true,
+            low: getMin(series[0]),
+            high: getMax(series[0]),
+            showArea: area,
+            height: "256px",
+            axisX: {
+                showGrid: true,
+            },
+            lineSmooth: Chartist.Interpolation.simple({
+                divisor: 3
+            }),
+            showLine: true,
+            showPoint: false,
+        };
+        var responsive = [
+            ['screen and (max-width: 640px)', {
+                axisX: {
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }]
+        ];
+        return new Chartist.Line(selector, data, options, responsive);
+    }
+
+    function getMax(arr) {
+        var max = arr.reduce(function (a, b) {
+            return Math.max(a, b);
+        });
+        return max;
+    }
+
+    function getMin(arr) {
+        var min = arr.reduce(function (a, b) {
+            return Math.min(a, b);
+        });
+        return min;
+    }
+
+    function updateData(plant, date) {
+        $('#status').show();
+        $.get('/dashboard/api/' + plant + '/' + date + '/', function (data) {
+            $('#growth_rate').html(data.growth.toFixed(2) + '%');
+            $('#transpiration_rate').html(data.transpiration.toFixed(2) + '%');
+            $('#sutability').html((data.suitable * 100).toFixed(2) + '%');
+            data.time = data.time.map(function (epoc) {
+                var d = new Date(epoc);
+                return d.getHours() + ":" + d.getMinutes();
+            });
+            window.moisture = renderChart('#soil_moisture', data.time, [data.moisture, data.predicted], false);
+            window.temperature = renderChart('#temperature', data.time, [data.temperature], true);
+            window.humidity = renderChart('#humidity', data.time, [data.humidity], true);
+            console.log(data);
+            $('#status').hide();
+        });
+    }
+
+    $(document).ready(function () {
+        $('#date').mask('00-00-0000');
+    });
+    $('#update_data').click(function () {
+        var plant = $('#plant').val();
+        var date = $('#date').val();
+        updateData(plant, date);
+    });
+    updateData('gardenia', '18-02-2018');
+</script>

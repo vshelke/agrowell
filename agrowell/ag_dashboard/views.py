@@ -1,8 +1,17 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+import ag_dashboard.modules.db as db
+import datetime
 
 # Create your views here.
-def index(request):
-    return render(request, 'dashboard/index.html')
-
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    if request.user.is_authenticated:
+        return render(request, 'dashboard/dashboard.html')
+    return render(request, 'general/index.html')
+
+def api(request, plant, date):
+    if request.user.is_authenticated:
+        date = datetime.datetime.strptime(date, "%d-%m-%Y")
+        return HttpResponse(db.getData(plant, date), status=200, content_type='application/json')
+    return render(request, 'general/index.html')
+    # return date
