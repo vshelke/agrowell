@@ -49,7 +49,11 @@
         $('#status').show();
         $('#error').hide();
         $.get('/dashboard/api/' + plant + '/' + date + '/', function (data) {
-            $('#growth_rate').html(data.growth.toFixed(2) + '%');
+            if (data.status === "fail") {
+                $('#status').hide();
+                $('#error').show();
+            }
+            $('#growth_rate').html(Math.abs(data.growth.toFixed(2)) + '%');
             $('#transpiration_rate').html(data.transpiration.toFixed(2) + '%');
             $('#sutability').html((data.suitable * 100).toFixed(2) + '%');
             data.time = data.time.map(function (epoc) {
