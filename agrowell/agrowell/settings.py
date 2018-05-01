@@ -25,7 +25,7 @@ SECRET_KEY = 'olohy26hdn$_m6p@no19&$6tmh+@n67_0!2^mdgytw&g7j^v#='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agrowell.co', 'www.agrowell.co']
 
 
 # Application definition
@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
 ]
+STATIC_ROOT = '/home/vshelke/static/'
+
