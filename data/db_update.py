@@ -26,9 +26,7 @@ for index, row in df.iterrows():
         'day': int(row['day'])
     }
     r.db('farm').table(plant).insert(data).run()
-try:
-	r.db('farm').table(plant).index_create('timestamp').run(conn)
-except:
-	print ("index already created")
+
+print ("Done data loading")
 
 

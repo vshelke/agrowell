@@ -52,11 +52,11 @@ def getData(plant, date):
             'transpiration': transpiration,
             'suitable': suitable,
             'time': json.loads(stamp),
-            'moisture': list(df_present['moisture'].to_dict().values()),
-            'temperature': list(df_present['temperature'].to_dict().values()),
-            'humidity': list(df_present['humidity'].to_dict().values()),
-            'day': list(df_present['day'].to_dict().values()),
-            'predicted': list(predict_present.to_dict().values())
+            'moisture': json.loads(df_present['moisture'].to_json(orient='records')),
+            'temperature': json.loads(df_present['temperature'].to_json(orient='records')),
+            'humidity': json.loads(df_present['humidity'].to_json(orient='records')),
+            'day': json.loads(df_present['day'].to_json(orient='records')),
+            'predicted': json.loads(predict_present.to_json(orient='records')),
         }
         return json.dumps(dump)
     else:
