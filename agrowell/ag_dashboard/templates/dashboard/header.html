@@ -21,17 +21,14 @@
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
     <link href="{% static 'css/chartist.css' %}" rel="stylesheet" />
     <link href="{% static 'css/site.css' %}" rel="stylesheet" />
+    {% block css %}
+    {% endblock %}
 
 </head>
 
 <body>
-    <div class="page">
-        <div class="page-main">
-            {% block body %}
-            {% endblock %}
-        </div>
-    </div>
-    {% include 'dashboard/footer.html' %}
+    {% block body %}
+    {% endblock %}
 </body>
     {% block script %}
     {% endblock %}

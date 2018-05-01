@@ -47,6 +47,7 @@
 
     function updateData(plant, date) {
         $('#status').show();
+        $('#error').hide();
         $.get('/dashboard/api/' + plant + '/' + date + '/', function (data) {
             $('#growth_rate').html(data.growth.toFixed(2) + '%');
             $('#transpiration_rate').html(data.transpiration.toFixed(2) + '%');
@@ -60,6 +61,9 @@
             window.humidity = renderChart('#humidity', data.time, [data.humidity], true);
             console.log(data);
             $('#status').hide();
+        }).fail(function() {
+            $('#status').hide();
+            $('#error').show();
         });
     }
 
