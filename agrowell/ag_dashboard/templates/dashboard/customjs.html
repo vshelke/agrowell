@@ -45,10 +45,10 @@
         return min;
     }
 
-    function updateData(plant, date) {
+    function updateData(plant, date, degree) {
         $('#status').show();
         $('#error').hide();
-        $.get('/dashboard/api/' + plant + '/' + date + '/', function (data) {
+        $.get('/dashboard/api/' + plant + '/' + date + '/' + degree + '/', function (data) {
             if (data.status === "fail") {
                 $('#status').hide();
                 $('#error').show();
@@ -77,7 +77,8 @@
     $('#update_data').click(function () {
         var plant = $('#plant').val();
         var date = $('#date').val();
-        updateData(plant, date);
+        var degree = $('#degree').val();
+        updateData(plant, date, degree);
     });
-    updateData('gardenia', '18-02-2018');
+    updateData('gardenia', '18-02-2018', 1);
 </script>

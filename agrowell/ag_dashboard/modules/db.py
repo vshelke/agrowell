@@ -31,7 +31,7 @@ def getDF(plant, start, end):
         return []
     return df
     
-def getData(plant, date):
+def getData(plant, date, degree):
     end = date + datetime.timedelta(days=1)
     start = date - datetime.timedelta(days=1)
     df_present = getDF(plant, time2epoch(date), time2epoch(end))
@@ -40,8 +40,8 @@ def getData(plant, date):
         raw = df_present
         df_present = df_present.loc[::batch]
         df_previous = df_previous.loc[::batch]
-        _, coef_previous = formula.getPredicted(df_previous)
-        predict_present, coef_present = formula.getPredicted(df_present)
+        _, coef_previous = formula.getPredicted(df_previous, degree)
+        predict_present, coef_present = formula.getPredicted(df_present, degree)
         growth = formula.getGrowthRate(coef_present, coef_previous)
         transpiration = formula.getTranspirationRate(raw)
         suitable = formula.getSuitability(raw)

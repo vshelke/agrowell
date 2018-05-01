@@ -9,9 +9,9 @@ def dashboard(request):
         return render(request, 'dashboard/dashboard.html')
     return render(request, 'general/index.html')
 
-def api(request, plant, date):
+def api(request, plant, date, degree):
     if request.user.is_authenticated:
         date = datetime.datetime.strptime(date, "%d-%m-%Y")
-        return HttpResponse(db.getData(plant, date), status=200, content_type='application/json')
+        return HttpResponse(db.getData(plant, date, int(degree)), status=200, content_type='application/json')
     return render(request, 'general/index.html')
     # return date

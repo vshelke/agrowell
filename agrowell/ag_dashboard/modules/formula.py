@@ -22,9 +22,9 @@ def getTranspirationRate(data):
 def getSuitability(data):
     return ((20/data['temperature'].mean()) + (70/data['humidity'].mean()))/2 
 
-def getPredicted(chunk):
+def getPredicted(chunk, degree):
     x = chunk['time']
     y = chunk['moisture']
-    coefs = poly.polyfit(x, y, 1)
+    coefs = poly.polyfit(x, y, degree)
     yfit = poly.Polynomial(coefs)
     return yfit(x), coefs
