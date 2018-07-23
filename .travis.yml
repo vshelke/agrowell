@@ -8,6 +8,7 @@
 # * your_repo
 
 language: python
+dist: precise
 
 python:
   - 3.5
