@@ -32,6 +32,7 @@ before_script:
   - psql -c "CREATE DATABASE mydb;" -U postgres
 
 script:
+  - cd agrowell/
   - python manage.py syncdb --noinput
 
 after_success: echo 'Build Success'
